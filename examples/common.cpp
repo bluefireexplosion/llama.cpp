@@ -284,6 +284,8 @@ bool gpt_params_parse(int argc, char ** argv, gpt_params & params) {
                 break;
             }
             params.n_gpu_layers = std::stoi(argv[i]);
+        } else if (arg == "--use-tools") {
+            params.use_tools = true; 
         } else if (arg == "--no-mmap") {
             params.use_mmap = false;
         } else if (arg == "--mtest") {

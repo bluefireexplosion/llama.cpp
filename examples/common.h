@@ -54,9 +54,13 @@ struct gpt_params {
     std::string lora_adapter = "";  // lora adapter path
     std::string lora_base    = "";  // base model path for the lora adapter
 
+    //TODO: this should be user passable, or at least trainable
+    //std::string tool_list = "";
+
     bool memory_f16        = true;  // use f16 instead of f32 for memory kv
     bool random_prompt     = false; // do not randomize prompt if none provided
     bool use_color         = false; // use color to distinguish generations and inputs
+    bool use_tools         = false; // have the AI use custom tool embeddings to solve problems
     bool interactive       = false; // interactive mode
     bool prompt_cache_all  = false; // save user input and generations to prompt cache
 

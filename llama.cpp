@@ -907,6 +907,8 @@ static const char *llama_model_type_name(e_model type) {
     }
 }
 
+
+
 static void llama_model_load_internal(
         const std::string & fname,
         llama_context & lctx,
@@ -1676,6 +1678,15 @@ void llama_sample_softmax(struct llama_context * ctx, llama_token_data_array * c
 }
 
 void llama_sample_top_k(struct llama_context * ctx, llama_token_data_array * candidates, int k, size_t min_keep) {
+    //Add new embedding layer somehow, with tokenized tools
+    //Train that new layer using transfer learning on tool usage
+    //Test to see if candidates contains tool
+    //If so, select when valid, and then implement tool mode
+    printf("\nDebug, dumping candidates:\n");
+    for (size_t i = 0; i < candidates->size; ++i) {
+        printf("Candidates %ld: %s\n",i,llama_token_to_str(ctx,candidates->data[i].id));
+    }
+    
     const int64_t t_start_sample_us = ggml_time_us();
 
     k = std::max(k, (int) min_keep);

@@ -134,6 +134,13 @@ int main(int argc, char ** argv) {
         return 0;
     }
 
+    if (params.use_tools) {
+        //add our const defined tool embeddings and tokenize them 
+        //test with add
+        auto test_tool = ::llama_tokenize(ctx, "[add]", false);
+        //llama_eval(ctx, test_tool.data(), std::min((int)test_tool.size(), params.n_ctx),0,params.n_threads);
+    }
+
     // Add a space in front of the first character to match OG llama tokenizer behavior
     params.prompt.insert(0, 1, ' ');
 
